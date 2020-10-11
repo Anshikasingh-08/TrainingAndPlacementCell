@@ -1,0 +1,239 @@
+from tkinter import ttk
+import tkinter
+from PIL import Image, ImageTk
+from tkinter import font, messagebox
+import pandas
+
+db=pandas.read_csv('db.csv - Sheet1.csv')
+
+
+def cmbx_sem_click(e):
+    lbl_odd=tkinter.Label(frm_acad, text='SEM RESULT:')
+    lbl_odd.place(x=120, y=180, height=50, width=200)
+    txt_odd=tkinter.Entry(frm_acad)
+    txt_odd.place(x=120,y=270, height=50, width=200)
+
+
+def btn_academic(e):
+    global frm_acad
+    frm_acad=tkinter.Frame(f, bg='midnightblue')
+    frm_acad.place(x=500, y=300, height=335, width=450)
+    global num
+    num = tkinter.IntVar()
+    cmbx_sem = ttk.Combobox(frm_acad, width=30, textvariable=num)
+    cmbx_sem.bind('<Button-1>', cmbx_sem_click)
+    cmbx_sem['values'] = ('SEMESTER',1, 2, 3, 4, 5, 6, 7, 8)
+    cmbx_sem.place(x=130, y=70, height=50)
+    cmbx_sem.current(0)
+
+
+def btn_click_overview(e):
+    
+
+
+def btn_click_login1():
+    messagebox.showinfo("LOGIN SUCCESS", "You've logged in successfully")
+    root= tkinter.Toplevel()
+    root.title("STUDENT PORTAL")
+    root.state('z')
+    global f
+    f= tkinter.Frame(root,height=1500, width=1700, bg="lightcyan")
+
+    l= tkinter.Label(f,text="BIET JHANSI TRAINING AND PLACEMENT CELL",width=60,height= 1,font=('Courier',24,'bold underline'),fg='black',bg='turquoise')
+    l.place(x=150,y=50)
+
+    l1= tkinter.Label(f, text="STUDENT PORTAL",width=60,height=1, font=('Courier',24, 'bold'),fg="black",bg= 'turquoise')
+    l1.place(x=150,y=90)
+
+    b1= tkinter.Button(f, text="ACADEMIC REPORT", width=20,height=1,font=('Arial',14,'bold'),fg='white',bg='midnightblue',activeforeground= 'black',activebackground='turquoise', cursor='hand2')
+    b1.bind('<Button-1>', btn_academic)
+    b1.place(x=100,y=300)
+
+    b2= tkinter.Button(f, text="RESUME UPDATE", width=20,height=1,font=('Arial',14,'bold'),fg='white',bg='midnightblue',activeforeground= 'black',activebackground='turquoise', cursor='hand2')
+    b2.place(x=100,y=400)
+
+    b3=tkinter.Button(f, text="PLACEMENT UPDATE", width=20,height=1,font=('Arial',14,'bold'),fg='white',bg='midnightblue',activeforeground= 'black',activebackground='turquoise', cursor='hand2')
+    b3.place(x=100, y=500)
+
+    b4=tkinter.Button(f, text="LOGOUT", width=20,height=1,font=('Arial',14,'bold'),fg='white',bg='midnightblue',activeforeground= 'black',activebackground='turquoise', cursor='hand2')
+    b4.place(x=100,y=600)
+
+    t= tkinter.Text(root,width=30,height=10,fg='lightcyan', bg='lightcyan')
+    i_load=Image.open('images.jpeg')
+    i= ImageTk.PhotoImage(i_load)
+    t.image_create(tkinter.END,image=i)
+    t.pack()
+    t.place(x=1000,y=150)
+
+    l2= tkinter.Label(f, text="*STUDENT NAME*",width=20,height=1,font=('Impact',14),fg='darkslategrey',bg='paleturquoise')
+    l2.place(x=1040,y=350)
+
+    l3= tkinter.Label(f, text="HIGHLIGHTS",width=25,height=1,font=('Arial Black',18,'bold underline'),fg='midnightblue',bg='lightcyan')
+    l3.place(x=500,y=200)
+    f.pack()
+    root.mainloop()
+
+
+def btn_click_signup():
+    # import sqlite3
+    # con = sqlite3.connect('Student1.db')
+    # con.execute(
+    #     "CREATE TABLE STUDENT1(ROLLNO INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, BRANCH TEXT NOT NULL, SEMESTER TEXT NOT NULL, PASSWORD TEXT NOT NULL)")
+
+    # def insert():
+        # e = ("INSERT INTO STUDENT1(ROLLNO,NAME, BRANCH, SEMESTER, PASSWORD) VALUES (?,?,?,?,?)")
+        # x = (i, str2, str3, str4, str5)
+        # con.execute(e, x)
+        # con.close()
+
+
+    root = tkinter.Tk()
+    root.title("SIGN UP PORTAL")
+    f = tkinter.Frame(root, height=800, width=800, bg="misty rose", cursor="hand1")
+    l = tkinter.Label(f, text="SIGN UP", width=10, height=1, font=('Arno', 14, 'bold underline'), fg='PaleVioletRed3', cursor='hand2')
+    lbl1 = tkinter.Label(f, text="ROLL NO.", width=10, height=1, font=('Arno', 14, 'bold'), fg='PaleVioletRed1', cursor='hand2')
+    lbl2 = tkinter.Label(f, text="NAME", width=10, height=1, font=('Arno', 14, 'bold'), fg='PaleVioletRed1', cursor='hand2')
+    lbl3 = tkinter.Label(f, text="BRANCH", width=10, height=1, font=('Arno', 14, 'bold'), fg='PaleVioletRed1', cursor='hand2')
+    lbl4 = tkinter.Label(f, text="SEMESTER", width=10, height=1, font=('Arno', 14, 'bold'), fg='PaleVioletRed1', cursor='hand2')
+    lbl5 = tkinter.Label(f, text="PASSWORD", width=10, height=1, font=('Arno', 14, 'bold'), fg='PaleVioletRed1', cursor='hand2')
+    b = tkinter.Button(f, text="CONFIRM", width=10, height=2, font=('Arno', 20, 'bold'), fg='PaleVioletRed2', cursor='hand2')
+    e1 = tkinter.Entry(f, width=15, fg='black', bg='white', font=('Arial', 14))
+    e2 = tkinter.Entry(f, width=15, fg='black', bg='white', font=('Arial', 14))
+    e3 = tkinter.Entry(f, width=15, fg='black', font=('Arial', 20), show="*")
+    l1 = tkinter.Entry(f, width=15, fg='black', font=('Arial', 14))
+    l2 = tkinter.Entry(f, width=15, fg='black', font=('Arial', 14))
+
+    l.place(x=300, y=10)
+    lbl1.place(x=100, y=100)
+    lbl2.place(x=100, y=200)
+    lbl3.place(x=100, y=300)
+    lbl4.place(x=100, y=400)
+    lbl5.place(x=100, y=500)
+    e1.place(x=300, y=100)
+    e2.place(x=300, y=200)
+    l1.place(x=300, y=300)
+    l2.place(x=300, y=400)
+    e3.place(x=300, y=500)
+    b.place(x=600, y=600)
+    # i = e1.get()
+    # str2 = e2.get()
+    # str3 = l1.get()
+    # str4 = l2.get()
+    # str5 = e3.get()
+    # messagebox.showinfo('Sign up', 'Sign up completed successfully')
+    f.pack()
+    root.mainloop()
+
+
+def btn_click_login():
+    font_head1 = font.Font(family="ariel", size=10, weight="bold")
+    root = tkinter.Toplevel()
+    root.state('z')
+    root.deiconify()
+    root.title('LOGIN FORM')
+    root.configure(bg='#8bc491')
+    img_lbl_load = Image.open("BIET_Jhansi_Logo.jpg")
+    img_lbl = ImageTk.PhotoImage(img_lbl_load)
+    img_lbl.img = img_lbl
+    lbl_img_lbl = tkinter.Label(root, image=img_lbl, cursor='hand2')
+    lbl_img_lbl.place(x=240, y=30)
+    font_head_login = font.Font(family="Impact", size=20, weight="bold", slant='roman')
+
+    lbl_headi=tkinter.Label(root, text='BIET JHANSI TRAINING AND PLACEMENT CELL', font=font_head_login, width=50, bg='#c5e5c8', cursor='hand2')
+    lbl_headi.place(x=390, y=30, height=155)
+
+    lbl = tkinter.Frame(root, height=500, width=600,bg='#c5e5c8')
+    lbl_login = tkinter.Label(lbl, text='LOGIN', bg='#8bc491', relief='groove', padx=30, pady=20, font=font_head_login)
+    lbl_roll = tkinter.Label(lbl, text='ROLL NO.', bg='#8bc491', relief='groove', padx=40, pady=20, font=font_head1)
+    lbl_pass = tkinter.Label(lbl, text='PASSWORD', bg='#8bc491', relief='groove', padx=30, pady=20, font=font_head1)
+    str_roll = tkinter.StringVar()
+    txt_roll = tkinter.Entry(root, textvariable=str_roll)
+    str_pass = tkinter.StringVar()
+    txt_pass = tkinter.Entry(root, textvariable=str_pass, show='*')
+    btn_login = tkinter.Button(lbl, text='Login', bg='#8bc491', padx=30, pady=10, font=font_head1, command=btn_click_login1, cursor='hand2')
+    btn_fgps = tkinter.Button(lbl,text='Forgot Password?', bg='#8bc491', padx=30, pady=10, font=font_head1, cursor='hand2')
+
+    lbl_login.place(x=210,y=100, width=190)
+    lbl_roll.place(x=130, y=200, height=40)
+    lbl_pass.place(x=130, y=280, height=40)
+    txt_roll.place(x=700, y=405, height=40, width=190)
+    txt_pass.place(x=700, y=485, height=40, width=190)
+    btn_login.place(x=130, y=380)
+    btn_fgps.place(x=290, y=380)
+
+    lbl.pack(side='bottom')
+    root.mainloop()
+
+
+root=tkinter.Tk()
+root.state('z')
+root.title('BIET TRAINING AND PLACEMENT CELL')
+root.configure(bg='white')
+
+img_load=Image.open('bietplaceme.v1.jpg')
+img=ImageTk.PhotoImage(img_load)
+img.img=img
+
+lbl_img=tkinter.Label(root, image=img)
+lbl_img.place(x=0, y=0, relwidth=1, relheight=1)
+
+img_load = Image.open("BIET_Jhansi_Logo.jpg")
+img_bg = ImageTk.PhotoImage(img_load, height=2000, width=2000)
+img_bg.img = img_bg
+lbl_master = tkinter.Label(master=lbl_img, image=img_bg, bg='white', cursor='hand2')
+lbl_master.place(x=50, y=30)
+font_head = font.Font(family="Impact",size=36, weight="bold", slant='roman')
+
+lbl_one = tkinter.Label(master=lbl_img, text="BIET JHANSI TRAINING AND PLACEMENT CELL", background='#6b9969', font=font_head, width=46, fg='white', cursor='hand2')
+lbl_one.place(x=200,y=30, height=155)
+
+lbl_win=tkinter.Label(lbl_img, bg='#c5e5c8')
+lbl_win.place(x=60, y=200, height=100, width=1250)
+
+#login buttons
+
+btn_OVERVIEW = tkinter.Button(master=lbl_win, text='OVERVIEW', background='#8bc491', cursor='hand2')
+btn_OVERVIEW.bind('<Button-1>',btn_click_overview)
+btn_OVERVIEW.place(x=50, y=30, height=50, width=200)
+
+btn_signup = tkinter.Button(master=lbl_win, text='SIGN UP', background='#8bc491', command=btn_click_signup, cursor='hand2')
+btn_signup.place(x=350, y=30, height=50, width=200)
+
+btn_login = tkinter.Button(master=lbl_win, text='LOGIN', background='#8bc491', command=btn_click_login, cursor='hand2')
+btn_login.place(x=650, y=30, height=50, width=200)
+
+btn_call = tkinter.Button(master=lbl_win, text='CONTACT US: 0512-234-989', background='#8bc491', state='normal')
+btn_call.place(x=1000, y=28, height=52, width=200)
+
+#about-us
+lbl_abt=tkinter.Label(lbl_img, text='ABOUT', font=font_head, bg='#6b9969', justify='left', fg='white', cursor='hand2')
+lbl_abt.place(x=60, y=330, height=70, width=700)
+
+font_abt=font.Font(family='Segoe Print', size=10, weight='bold')
+
+lbl_about=tkinter.Label(lbl_img, text=
+"""The main purpose of your About Us page is to give your visitors a glimpse into who you are as a person or a business (or sometimes both).As users discover your brand, they need to distinguish what sets you apart and makes you… you. This often requires findingthe right balance between compelling content and a design carefully planned to look the part. Conveying your identity in a fun and approachable – butalso reliable and informative – way is challenging. If you know who you are and your goal for your site, the About Us page should come naturally.However, if you’re looking for some inspiration, you can always check out the following 25 awesome examples of About Us pages.""", wraplength=700, pady=10, font=font_abt, bg='#c5e5c8')
+lbl_about.place(x=60, y=410, height=200, width=700)
+
+lbl_news=tkinter.Label(lbl_img, text='NEWS', bg='#6b9969', padx=10, cursor='hand2')
+lbl_news.place(x=800, y=330, height=40, width=180)
+scr_news=tkinter.Scrollbar(lbl_img)
+scr_news.place(x=980, y=330, height=140)
+mylist = tkinter.Listbox(lbl_img, bg='#c5e5c8', yscrollcommand = scr_news.set , cursor='hand2')
+for line in range(1,15):
+   mylist.insert(tkinter.END, "News item " + str(line))
+mylist.place(x=800, y=370, height=100, width=180)
+scr_news.config(command=mylist.yview)
+
+lbl_announcement=tkinter.Label(lbl_img, text='announcement'.capitalize(), bg='#6b9969', padx=10, cursor='hand2')
+lbl_announcement.place(x=800, y=477, height=40, width=180)
+scr_announcement=tkinter.Scrollbar(lbl_img)
+scr_announcement.place(x=980, y=477, height=136)
+mylistx = tkinter.Listbox(lbl_img, bg='#c5e5c8', yscrollcommand = scr_announcement.set , cursor='hand2')
+for line in range(1,15):
+   mylistx.insert(tkinter.END, "announcement 1 ".title() + str(line))
+mylistx.place(x=800, y=510, height=100, width=180)
+scr_announcement.config(command=mylistx.yview)
+
+
+root.mainloop()
