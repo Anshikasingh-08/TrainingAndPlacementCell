@@ -27,8 +27,8 @@ def btn_academic(e):
     cmbx_sem.current(0)
 
 
-def btn_click_overview(e):
-    
+
+
 
 
 def btn_click_login1():
@@ -193,7 +193,6 @@ lbl_win.place(x=60, y=200, height=100, width=1250)
 #login buttons
 
 btn_OVERVIEW = tkinter.Button(master=lbl_win, text='OVERVIEW', background='#8bc491', cursor='hand2')
-btn_OVERVIEW.bind('<Button-1>',btn_click_overview)
 btn_OVERVIEW.place(x=50, y=30, height=50, width=200)
 
 btn_signup = tkinter.Button(master=lbl_win, text='SIGN UP', background='#8bc491', command=btn_click_signup, cursor='hand2')
